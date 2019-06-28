@@ -1,0 +1,77 @@
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700|Roboto+Slab:400,700); */
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+
+.d3-wrapper {
+    height: 600px;
+    position: relative;
+    font-family: "Roboto"
+}
+
+.map-container {
+    height: 100%;
+}
+
+.tooltip-container {
+    position: absolute;
+    pointer-events: none;
+    background-color: gainsboro;
+    background-color: rgba(245, 245, 245, 0.95);
+    border-radius: 3px;
+    border: 1pt solid black;
+    opacity: 0;
+    padding: 0.5rem;
+    min-width: 150px;
+    max-width: 315px;
+}
+
+@media (max-width:600px) {
+    .d3-wrapper {
+        height: 400px;
+    }
+
+    .tooltip-container {
+        width: 95%;
+        max-width: 95%;
+    }
+}
+
+.tooltip-text {
+    margin:0;
+}
+
+.tooltip-text p {
+    margin: 0 0 0.5rem 0;
+}
+
+.tooltip-text p:last-of-type {
+    margin: 0;
+}
+
+.tooltip-comment {
+    font-size: 0.85rem
+}
+
+.badge {
+    font-size: 0.75rem;
+    color: #808080
+}
+
+.legend-label {
+    font-size: 0.65rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+.close-btn:after {
+    font-weight:700;
+    font-size: 0.75rem;
+    content:'X';
+}
+
+.entry-content .caption {
+    font-size: 0.7rem;
+}
