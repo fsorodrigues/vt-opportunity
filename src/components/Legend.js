@@ -2,7 +2,6 @@
 import {select} from "d3-selection";
 
 // importing texture module
-import t from "textures";
 
 // importing modules
 
@@ -67,7 +66,7 @@ function Legend(data) {
         labelUpdate = labelUpdate.merge(labelEnter)
             .attr('x',18)
             .attr('y',12)
-            .text(d => data[d])
+            .text(d => data[d]);
 
 
         //
