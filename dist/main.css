@@ -1,0 +1,148 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700|Roboto+Slab:400,700); */
+
+.d3-wrapper {
+    height: 600px;
+    position: relative;
+    font-family: "Roboto"
+}
+
+.map-container {
+    height: 100%;
+}
+
+.tooltip-container {
+    position: absolute;
+    pointer-events: none;
+    background-color: gainsboro;
+    background-color: rgba(245, 245, 245, 0.95);
+    border-radius: 3px;
+    border: 1pt solid black;
+    opacity: 0;
+    padding: 0.5rem;
+    min-width: 150px;
+    max-width: 315px;
+}
+
+@media (max-width:600px) {
+    .d3-wrapper {
+        height: 400px;
+    }
+
+    .tooltip-container {
+        width: 95%;
+        max-width: 95%;
+    }
+}
+
+.tooltip-text {
+    margin:0;
+}
+
+.tooltip-text p {
+    margin: 0 0 0.25rem 0;
+}
+
+.tooltip-text p:last-of-type {
+    margin: 0;
+}
+
+.tooltip-comment {
+    font-size: 0.85rem
+}
+
+.faded {
+    font-size: 0.75rem;
+    color: #808080
+}
+
+.badge {
+    font-size: 0.65rem;
+    color: #303030;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+}
+
+.badge-selected {
+    background-color: dodgerblue;
+}
+
+.badge-not-selected {
+    background-color: crimson;
+}
+
+.legend-label {
+    font-size: 0.65rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+.close-btn:after {
+    font-weight:700;
+    font-size: 0.75rem;
+    content:'X';
+}
+
+.entry-content .caption {
+    font-size: 0.7rem;
+}
+
+.d3-wrapper table {
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.d3-wrapper th {
+    text-align: inherit;
+}
+
+.d3-wrapper td {
+}
+
+.d3-wrapper .table th,
+.d3-wrapper .table td {
+    padding: 0.75rem;
+    vertical-align: baseline;
+    border-top: 1px solid #dee2e6;
+}
+
+.d3-wrapper .table thead th {
+    vertical-align: bottom;
+}
+
+.d3-wrapper .table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+}
+
+.d3-wrapper .table .table {
+    background-color: #fff;
+}
+
+.d3-wrapper .table-sm th,
+.d3-wrapper .table-sm td {
+    padding: 0.3rem;
+}
+
+.d3-wrapper .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+    /* background-color: rgba(255, 255, 224, 0.7); */
+}
+
+.d3-wrapper .table-sm tbody td:nth-of-type(2) {
+    /* font-size: 0.7rem; */
+}
+
+.d3-wrapper .table-sm tbody td:first-child {
+    width: 60%;
+}
+
+.d3-wrapper .table-sm tbody td:last-child {
+    text-align: right;
+}
+
