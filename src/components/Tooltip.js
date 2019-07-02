@@ -31,8 +31,7 @@ function Tooltip() {
             .append('div')
             .classed('tooltip',true);
         tooltipUpdate.exit().remove();
-        tooltipUpdate = tooltipUpdate.merge(tooltipEnter)
-            .each(tooltipcontent);
+        tooltipUpdate = tooltipUpdate.merge(tooltipEnter);
 
         if (_isMobile & _toggle) {
             container.style('top',`${0}px`)

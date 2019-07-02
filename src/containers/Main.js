@@ -2,7 +2,7 @@
 import {select,mouse} from "d3-selection";
 
 // importing util functions
-// import {getLength} from "../utils/utils";
+// import {} from "../utils/utils";
 
 // importing CSS
 import '../style/main.css';
@@ -53,39 +53,39 @@ function Main(_) {
         mapUpdate = mapUpdate.merge(mapEnter)
             .each(mapProjection);
 
-        // // appending tooltip container
-        // let tooltipContainerUpdate = container.selectAll('.tooltip-container')
-        //     .data([1]);
-        // const tooltipContainerEnter = tooltipContainerUpdate.enter()
-        //     .append('div')
-        //     .classed('tooltip-container',true);
-        // tooltipContainerUpdate.exit().remove();
-        // tooltipContainerUpdate = tooltipContainerUpdate.merge(tooltipContainerEnter);
+        // appending tooltip container
+        let tooltipContainerUpdate = container.selectAll('.tooltip-container')
+            .data([1]);
+        const tooltipContainerEnter = tooltipContainerUpdate.enter()
+            .append('div')
+            .classed('tooltip-container',true);
+        tooltipContainerUpdate.exit().remove();
+        tooltipContainerUpdate = tooltipContainerUpdate.merge(tooltipContainerEnter);
 
-        // // handling events
-        // mapProjection.on('node:add:stroke',function() {
-        //     select(this).style('stroke', 'black')
-        //         .style('stroke-width', 1.5);
+        // handling events
+        mapProjection.on('node:add:stroke',function() {
+            select(this).style('stroke', 'black')
+                .style('stroke-width', 1.5);
 
-        // }).on('node:remove:stroke',function() {
-        //     select(this).style('stroke', 'gainsboro')
-        //         .style('stroke-width', 0.25);
+        }).on('node:remove:stroke',function() {
+            select(this).style('stroke', 'gainsboro')
+                .style('stroke-width', 0.25);
 
-        // }).on('node:reappend',function() {
-        //     this.parentNode.appendChild(this);
+        }).on('node:reappend',function() {
+            this.parentNode.appendChild(this);
 
-        // }).on('tooltip:toggle',function(d) {
-        //     tooltip.toggle(true)
-        //         .eventNode(this);
+        }).on('tooltip:toggle',function(d) {
+            tooltip.toggle(true)
+                .eventNode(this);
 
-        //     tooltipContainerUpdate.data(d)
-        //         .each(tooltip);
+            tooltipContainerUpdate.data([d])
+                .each(tooltip);
 
-        // }).on('tooltip:untoggle',function(d) {
-        //     tooltip.toggle(false);
-        //     tooltipContainerUpdate.each(tooltip);
+        }).on('tooltip:untoggle',function(d) {
+            tooltip.toggle(false);
+            tooltipContainerUpdate.each(tooltip);
 
-        // });
+        });
 
     }
 

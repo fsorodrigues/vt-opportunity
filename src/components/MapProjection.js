@@ -37,7 +37,7 @@ function MapProjection(data) {
 
     function exports(data) {
 
-        console.log(data);
+        // console.log(data);
 
         // data transformation
         // const dataset = data.data.data;
@@ -158,29 +158,29 @@ function MapProjection(data) {
             .style('stroke', 'gainsboro')
             .style('stroke-width', 0.25)
             .style('fill',d => {
-                return d.properties.hasOwnProperty('TOWNNAME') ? 'gainsboro' : 'dodgerblue';
+                const color = d.properties.hasOwnProperty('TOWNNAME') ? 
+                'gainsboro' : 
+                d.properties.status === 'selected' ? 'dodgerblue' :
+                'crimson';
+                return color;
+            })
+            .style('pointer-events',d => {
+                const events = d.properties.hasOwnProperty('TOWNNAME') ?
+                'none' :
+                'all';
+                return events;
+            })
+            .on('mouseenter',function(d) {
+                dispatcher.call('node:add:stroke',this,null);
+                dispatcher.call('node:reappend',this,null);
+                dispatcher.call('tooltip:toggle',this,d.properties);
+
+            })
+            .on('mouseleave',function(d) {
+                dispatcher.call('node:remove:stroke',this,null);
+                dispatcher.call('tooltip:untoggle',this,null);
+
             });
-        //     .style('pointer-events',d => {
-        //         const town = d.properties.TOWNNAME.toLowerCase();
-        //         if (!contamination.includes(town)) {
-        //             return 'none';
-        //         }
-        //         return 'all';
-        //     })
-        //     .on('mouseenter',function(d) {
-        //         const town = d.properties.TOWNNAME.toLowerCase();
-
-        //         const tooltipData = dataset.filter(e => e.city.toLowerCase() === town);
-
-        //         dispatcher.call('node:add:stroke',this,null);
-        //         dispatcher.call('node:reappend',this,null);
-        //         dispatcher.call('tooltip:toggle',this,tooltipData);
-        //     })
-        //     .on('mouseleave',function(d) {
-        //         dispatcher.call('node:remove:stroke',this,null);
-        //         dispatcher.call('tooltip:untoggle',this,null);
-
-        //     });
 
     }
 

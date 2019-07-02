@@ -1,3 +1,5 @@
+import {format} from "d3-format";
+
 export const isMobile = () => {
 	if (navigator.userAgent.match(/Android/i)
 	|| navigator.userAgent.match(/webOS/i)
@@ -23,3 +25,7 @@ export const legendDict = {
 };
 
 export const onlyUnique = (value, index, self) => self.indexOf(value) === index;
+
+export const formatNumber = format('.2%');
+
+export const toProperCase = d => `${d.charAt(0).toUpperCase()}${d.substring(1).toLowerCase()}`;
