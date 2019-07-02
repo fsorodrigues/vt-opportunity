@@ -19,16 +19,15 @@ const main = Main()
 
 // loading data
 const towns = json('./data/vt-towns.json');
-const oppo = json('./data/vt-oppo.json');
+const oppo = json('./data/tracts.json');
 
 // calling drawing function
 Promise.all([towns,oppo]).then(([towns,oppo]) => {
-    const dataset = {
-        "towns":towns,
-        "oppo":oppo
-    };
 
     select('.d3-wrapper')
         .data([[towns,oppo]])
         .each(main);
+        
 });
+
+
