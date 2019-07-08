@@ -27,7 +27,5 @@ Promise.all([towns,oppo]).then(([towns,oppo]) => {
     select('.d3-wrapper')
         .data([[towns,oppo]])
         .each(main);
-        
+
 });
-
-

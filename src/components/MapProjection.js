@@ -1,6 +1,6 @@
 // importing d3 modules
 import {select} from "d3-selection";
-import {geoMercator,geoPath} from "d3-geo";
+import {geoMercator,geoPath,path} from "d3-geo";
 import {dispatch} from "d3-dispatch";
 
 // importing texture module
@@ -14,7 +14,7 @@ const legend = Legend();
 // importing stylesheets
 
 // importing utitily functions
-import {legendDict} from '../utils/utils';
+import {statusDict} from '../utils/utils';
 
 // defining global variables
 
@@ -81,10 +81,6 @@ function MapProjection(data) {
             .attr('width', clientWidth)
             .attr('height', clientHeight);
 
-        // Object.keys(textures).forEach(d => {
-        //     svgUpdate.call(textures[d]);
-        // });
-
         // appending <g>s to SVG
         let plotUpdate = svgUpdate.selectAll('.plot')
             .data(d => [d]);
@@ -95,22 +91,18 @@ function MapProjection(data) {
         plotUpdate = plotUpdate.merge(plotEnter)
             .attr('transform',`translate(${margin.l},${margin.t})`);
 
-        // // passing textures dictionary to legend function
-        // legend.textures(textures)
-        //     .isMobile(_isMobile)
-        //     .margin(margin);
+        // passing textures dictionary to legend function
+        const legendX = _isMobile ? 165 : 2*w/3;
 
-        // const legendX = _isMobile ? 165 : 2*w/3;
-
-        // let legendUpdate = svgUpdate.selectAll('.legend')
-        //     .data([legendDict]);
-        // const legendEnter = legendUpdate.enter()
-        //     .append('g')
-        //     .classed('plot',true);
-        // legendUpdate.exit().remove();
-        // legendUpdate = legendUpdate.merge(legendEnter)
-        //     .attr('transform',`translate(${legendX},${h-100})`)
-        //         .each(legend);
+        let legendUpdate = svgUpdate.selectAll('.legend')
+            .data([statusDict]);
+        const legendEnter = legendUpdate.enter()
+            .append('g')
+            .classed('plot',true);
+        legendUpdate.exit().remove();
+        legendUpdate = legendUpdate.merge(legendEnter)
+            .attr('transform',`translate(${legendX},${h-100})`)
+                .each(legend);
 
         let mapUpdate = plotUpdate.selectAll('.map-tile')
             .data(d => d);
@@ -140,12 +132,16 @@ function MapProjection(data) {
                 return path(d);
             })
             .style('stroke', 'gainsboro')
-            .style('stroke-width', 0.25)
+            .style('stroke-width', d => {
+                const color = d.properties.hasOwnProperty('TOWNNAME') ?
+                0 :
+                0.25;
+                return color;
+            })
             .style('fill',d => {
-                const color = d.properties.hasOwnProperty('TOWNNAME') ? 
-                'gainsboro' : 
-                d.properties.status === 'selected' ? '#9acd32' :
-                '#ffa500';
+                const color = d.properties.hasOwnProperty('TOWNNAME') ? 'gainsboro' :
+                d.properties.status === 'selected' ? '#9acd32' : '#ffa500';
+
                 return color;
             })
             .style('pointer-events',d => {
@@ -165,6 +161,8 @@ function MapProjection(data) {
                 dispatcher.call('tooltip:untoggle',this,null);
 
             });
+
+
 
     }
 

@@ -27,12 +27,7 @@ function Legend(data) {
         const root = this;
         const container = select(root);
 
-        // declaring setup/layout variables
-        // const clientWidth = root.clientWidth;
-        // const clientHeight = root.clientHeight;
-        // const margin = _margin;
-        // const w = clientWidth - (margin.r + margin.l);
-        // const h = clientHeight - (margin.t + margin.b);
+        // data transformation
 
         // appending <g> to SVG
         let legendGroupUpdate = container.selectAll('.legend-group')
@@ -54,7 +49,9 @@ function Legend(data) {
             .attr('width',15)
             .attr('height',15)
             .attr('fill',d => {
-                return d === 'no contamination' ? 'gainsboro ': _textures[`${d} legend`].url();
+                const color = d === 'selected' ? '#9acd32' : '#ffa500';
+
+                return color;
             });
 
         let labelUpdate = legendGroupUpdate.selectAll('.legend-label')
@@ -67,59 +64,6 @@ function Legend(data) {
             .attr('x',18)
             .attr('y',12)
             .text(d => data[d]);
-
-
-        //
-        // let mapNodesUpdate = mapUpdate.selectAll('.map-node')
-        //     .data(d => [d]);
-        // const mapNodesEnter = mapNodesUpdate.enter()
-        //     .append('g')
-        //     .classed('map-node',true);
-        // mapNodesUpdate.exit().remove();
-        // mapNodesUpdate = mapNodesUpdate.merge(mapNodesEnter);
-        //
-        // let mapPathUpdate = mapNodesUpdate.selectAll('.map-path')
-        //     .data(d => d.features);
-        // const mapPathEnter = mapPathUpdate.enter()
-        //     .append('path')
-        //     .attr('class', d => 'class')
-        //     .classed('map-path',true);
-        // mapPathUpdate.exit().remove();
-        // mapPathUpdate = mapPathUpdate.merge(mapPathEnter)
-        //     .style('stroke', 'gainsboro')
-        //     .style('stroke-width', 0.25)
-        //     .style('fill',d => {
-        //         const town = d.properties.TOWNNAME.toLowerCase();
-        //         if (contamination.includes(town)) {
-        //             const type = datasetMap.get(town).type;
-        //             return textures[type].url();
-        //         }
-        //         return 'gainsboro';
-        //     })
-        //     .style('pointer-events',d => {
-        //         const town = d.properties.TOWNNAME.toLowerCase();
-        //         if (!contamination.includes(town)) {
-        //             return 'none';
-        //         }
-        //         return 'all';
-        //     })
-        //     .attr('d', d => {
-        //         return path(d);
-        //     })
-        //     .on('mouseenter',function(d) {
-        //         const town = d.properties.TOWNNAME.toLowerCase();
-        //
-        //         const tooltipData = dataset.filter(e => e.city.toLowerCase() === town);
-        //
-        //         dispatcher.call('node:add:stroke',this,null);
-        //         dispatcher.call('node:reappend',this,null);
-        //         dispatcher.call('tooltip:toggle',this,tooltipData);
-        //     })
-        //     .on('mouseleave',function(d) {
-        //         dispatcher.call('node:remove:stroke',this,null);
-        //         dispatcher.call('tooltip:untoggle',this,null);
-        //
-        //     });
 
     }
 
