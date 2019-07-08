@@ -21,7 +21,7 @@
     opacity: 0;
     padding: 0.5rem;
     min-width: 150px;
-    max-width: 315px;
+    max-width: 250px;
 }
 
 @media (max-width:600px) {
@@ -50,25 +50,29 @@
 .tooltip-comment {
     font-size: 0.85rem
 }
+.small-span {
+    font-size: 0.75rem;
+}
 
 .faded {
-    font-size: 0.75rem;
+    
     color: #808080
 }
 
 .badge {
     font-size: 0.65rem;
+    font-weight: 700;
     color: #303030;
     border-radius: 3px;
     padding: 0.25rem 0.5rem;
 }
 
 .badge-selected {
-    background-color: dodgerblue;
+    background-color: #9acd32;
 }
 
 .badge-not-selected {
-    background-color: crimson;
+    background-color: #ffa500;
 }
 
 .legend-label {
