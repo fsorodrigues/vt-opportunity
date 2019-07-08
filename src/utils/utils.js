@@ -18,14 +18,11 @@ export const isMobile = () => {
 	}
 };
 
-export const legendDict = {
-	'drinking water':"Contamination in drinking water",
-	'on-site':"Contamination on-site",
-	'no contamination': 'No contamination found'
-};
-
-export const onlyUnique = (value, index, self) => self.indexOf(value) === index;
-
 export const formatNumber = format('.2%');
 
 export const toProperCase = d => `${d.charAt(0).toUpperCase()}${d.substring(1).toLowerCase()}`;
+
+export const statusDict = {
+	selected: "Opportunity Zone",
+	"not selected": "Eligible, but not selected"
+};

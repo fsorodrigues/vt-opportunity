@@ -1,11 +1,9 @@
 // importing d3 modules
 import {select} from "d3-selection";
 import {geoMercator,geoPath} from "d3-geo";
-import {map} from "d3-collection";
 import {dispatch} from "d3-dispatch";
 
 // importing texture module
-import t from "textures";
 
 // importing modules
 import Legend from './Legend';
@@ -37,21 +35,7 @@ function MapProjection(data) {
 
     function exports(data) {
 
-        // console.log(data);
-
         // data transformation
-        // const dataset = data.data.data;
-        // const contamination = dataset.map(d => d.city.toLowerCase());
-        // const datasetMap = map(dataset,d => d.city.toLowerCase());
-
-        // // [].concat.apply([],dataset.map(d => d.type)).filter(onlyUnique)
-        // const textures = {
-        //     "drinking water": t.lines().background('#87CEEB').strokeWidth(0),
-        //     "on-site": t.lines().background('gainsboro').size(8).strokeWidth(.5),
-        //     "both": t.lines().background('#87CEEB').size(8).strokeWidth(.5),
-        //     "drinking water legend": t.lines().background('#87CEEB').strokeWidth(0),
-        //     "on-site legend": t.lines().background('none').size(8).strokeWidth(.5)
-        // };
 
         // selecting root element ==> chart container, div where function is called in index.js
         const root = this;
@@ -160,8 +144,8 @@ function MapProjection(data) {
             .style('fill',d => {
                 const color = d.properties.hasOwnProperty('TOWNNAME') ? 
                 'gainsboro' : 
-                d.properties.status === 'selected' ? 'dodgerblue' :
-                'crimson';
+                d.properties.status === 'selected' ? '#9acd32' :
+                '#ffa500';
                 return color;
             })
             .style('pointer-events',d => {

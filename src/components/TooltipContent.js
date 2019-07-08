@@ -2,7 +2,7 @@
 import {select} from 'd3-selection';
 
 // importing util functions
-import {formatDecimals} from '../utils/utils';
+import {statusDict} from '../utils/utils';
 
 // importing components
 import Table from './Table';
@@ -31,8 +31,8 @@ function TooltipContent() {
         tooltipTitleUpdate = tooltipTitleUpdate.merge(tooltipTitleEnter)
             .html(d => `
                 <p>Census tract <strong>${d['tract-nb']}</strong></p>
-                <p><span class='faded'>${d.county} county</span></p>
-                <p><span class='badge badge-${d.status.split(' ').join('-')}'>${d.status.toUpperCase()}</span></p>
+                <p><span class="small-span">${d.municipality}</span><span class='small-span faded'> - ${d.county} county</span></p>
+                <p><span class='badge badge-${d.status.split(' ').join('-')}'>${statusDict[d.status].toUpperCase()}</span></p>
                 `
             );
 
@@ -44,29 +44,6 @@ function TooltipContent() {
         tooltipTableUpdate.exit().remove();
         tooltipTableUpdate = tooltipTableUpdate.merge(tooltipTableEnter)
             .each(table);
-
-        // let tooltipCommentUpdate = container.selectAll('.tooltip-comment')
-        //     .data([data]);
-        // const tooltipCommentEnter = tooltipCommentUpdate.enter()
-        //     .append('div')
-        //     .classed('tooltip-table',true);
-        // tooltipCommentUpdate.exit().remove();
-        // tooltipCommentUpdate = tooltipCommentUpdate.merge(tooltipCommentEnter)
-        //     .html(d => `<p class="tooltip-comment">${d.comment}</p>`);
-
-        //
-        // // append tooltip
-        // let tooltipDetailUpdate = container.selectAll('.tooltip-detail')
-        //     .data([data]);
-        // const tooltipDetailEnter = tooltipDetailUpdate.enter()
-        //     .append('div')
-        //     .classed('tooltip-detail',true);
-        // tooltipDetailUpdate.exit().remove();
-        // tooltipDetailUpdate = tooltipDetailUpdate.merge(tooltipDetailEnter)
-        //     .html(d =>
-        //         `<p><strong>Median household income:</strong> $${formatDecimals(+d["med-household-income"])}</p>
-        //         <p><strong>Median property value:</strong> $${formatDecimals(+d["med-house-value"])}</p>
-        //         <p><strong>Ratio:</strong> ${formatDecimals(+d["ratio"])}</p>`);
 
     }
 
